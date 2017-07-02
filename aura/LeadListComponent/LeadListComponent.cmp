@@ -1,0 +1,62 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName"
+                access="global"
+                controller="LeadListComponentController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="leads" type="List" />
+    
+    
+    
+    <div class="slds-page-header slds-page-header_vertical">
+        <div class="slds-grid slds-grid_vertical">
+            <div>
+                <div class="slds-media slds-no-space slds-has-divider_bottom-space slds-media_center">
+                    <div class="slds-media__figure">
+                        <div class="slds-icon_container slds-icon-standard-lead">
+                            <lightning:icon iconName="action:lead_convert " size="large" alternativeText="Indicates approval"/>
+                        </div>
+                    </div>
+                    <div class="slds-media__body">
+                        <h1 class="slds-page-header__title slds-align-middle">HOT LEADS!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-grid">
+        
+    	<table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--striped">
+              <thead>
+                <tr class="slds-text-title--caps">
+                  <th scope="col">
+                    <div class="slds-truncate" title="Group Name">Name</div>
+                  </th>
+                  <th scope="col">
+                    <div class="slds-truncate" title="Group Status">Status</div>
+                  </th>
+                   
+                </tr>
+              </thead>
+              <tbody>
+                    <aura:iteration items="{!v.leads}" var="lead">
+                        
+                        <tr>
+                          <th scope="row" data-label="Name">
+                            <div class="slds-truncate"><a id="{!lead.Id}" onclick="{!c.naviRec}">{!lead.Name}</a></div>
+                          </th>
+                            
+                          <td data-label="Status">  
+                              <div class="slds-truncate">{!lead.Status}</div>
+                              
+                          </td>
+                                                    
+                        </tr>
+                      
+                    </aura:iteration>        
+              </tbody>
+        </table>
+        
+    </div>
+    
+</aura:component>

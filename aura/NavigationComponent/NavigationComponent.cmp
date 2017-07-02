@@ -1,0 +1,115 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName"
+                access="global"
+                controller="NavigationComponentController">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="relativeUrl" type="String" default="/_ui/core/chatter/ui/ChatterPage"/>
+    <aura:attribute name="absoluteUrl" type="String" default="https://developer.salesforce.com/"/>
+    <aura:attribute name="someId" type="Id"/>
+    <aura:attribute name="leadViews" type="List"/>
+    <aura:attribute name="leadList" type="List"/>
+    
+    <div class="slds-page-header slds-page-header_vertical">
+        <div class="slds-grid slds-grid_vertical">
+            <div>
+                <div class="slds-media slds-no-space slds-has-divider_bottom-space slds-media_center">
+                    <div class="slds-media__figure">
+                        <div class="slds-icon_container slds-icon-standard-lead">
+                            <lightning:icon iconName="action:lead_convert " size="large" alternativeText="Indicates approval"/>
+                        </div>
+                    </div>
+                    <div class="slds-media__body">
+                        <h1 class="slds-page-header__title slds-align-middle">NAVIGATION BASICS</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+              <thead>
+                <tr class="slds-text-title--caps">
+                  <th scope="col">
+                    <div class="slds-truncate" title="Group Name">Navigation Target</div>
+                  </th>
+                   
+                </tr>
+              </thead>
+        
+              <tbody>
+                       
+                  <tr>
+                      <th scope="row" data-label="Name">
+                          <div class="slds-truncate" title="Group Name">ABSOLUTE URL (EXTERNAL)</div>
+                          "https://developer.salesforce.com/"
+                      </th>
+                      <td data-label="Status">  
+                          <lightning:button variant="brand" label="GO" onclick="{!c.goToAbsoluteURL }" />
+                      </td>
+                  </tr>
+                  
+                  <tr>
+                      <th scope="row" data-label="Name">
+                          <div class="slds-truncate" title="Group Name">INTERNAL URL (INTERNAL)</div>
+                          "/_ui/core/chatter/ui/ChatterPage"
+                      </th>
+                      <td data-label="Status">  
+                          <lightning:button variant="brand" label="GO" onclick="{!c.goToRelativeURL}" />
+                      </td>
+                  </tr>
+
+                  <tr>
+                      <th scope="row" data-label="Name">
+                          <div class="slds-truncate" title="Group Name">COMPONENT</div>
+                          "c:LeadListComponent"
+                      </th>
+                      <td data-label="Status">  
+                          <lightning:button variant="brand" label="GO" onclick="{!c.goToComponent}" />
+                      </td>
+                  </tr>
+                  
+                  <tr>
+                      <th scope="row" data-label="Name">
+                          <div class="slds-truncate" title="Group Name">RECORD</div>
+                          UserId
+                      </th>
+                      <td data-label="Status">  
+                          <lightning:button aura:id="test" variant="brand" label="GO" onclick="{!c.goToRecord}" />
+                      </td>
+                  </tr>
+                  
+                  <tr>
+                      <th scope="row" data-label="Name">
+                          <div class="slds-truncate" title="Group Name">LIST VIEW</div>
+                          Some Lead List View
+                      </th>
+                      <td data-label="Status">  
+                          <lightning:button variant="brand" label="GO" onclick="{!c.goToListView}" />
+                      </td>
+                  </tr>
+                  
+                  <tr>
+                      <th scope="row" data-label="Name">
+                          <div class="slds-truncate" title="Group Name">RELATED LIST</div>
+                          Open Activities Related List
+                      </th>
+                      <td data-label="Status">  
+                          <lightning:button variant="brand" label="GO" onclick="{!c.goToRelatedList}" />
+                      </td>
+                  </tr>
+                  
+                  <tr>
+                      <th scope="row" data-label="Name">
+                          <div class="slds-truncate" title="Group Name">OBJECT HOME PAGE</div>
+                          Lead's Home Page
+                      </th>
+                      <td data-label="Status">  
+                          <lightning:button variant="brand" label="GO" onclick="{!c.goToObjectHome}" />
+                      </td>
+                  </tr>
+       
+              </tbody>
+        </table>
+    
+</aura:component>
